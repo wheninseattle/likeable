@@ -1,0 +1,31 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+  shadowDatabaseUrl = env("SHADOW_DB_URL")
+}
+
+model User {
+  id            Int     @id @default(autoincrement())
+  name          String
+}
+
+model Mesh {
+  id            Int     @id @default(autoincrement())
+  data          Json
+  cluster       Cluster @relation(fields: [clusterId], references: [id])
+  clusterId     Int
+}
+
+model Cluster {
+  id            Int     @id @default(autoincrement())
+  meshes        Mesh[]
+  rewardValue   Float
+}
+
