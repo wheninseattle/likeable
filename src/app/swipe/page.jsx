@@ -1,3 +1,4 @@
+"use client"
 import { Box, Container } from "@mui/material";
 import { Canvas } from "@react-three/fiber";
 import Model from "@/components/Model";
