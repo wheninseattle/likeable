@@ -91,6 +91,10 @@ a {
   text-decoration: none;
 }
 
+.fade {
+  transition: all 250ms liner 2s;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

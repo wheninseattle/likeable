@@ -1,6 +1,6 @@
 "use client";
 import { Box, Container, ThemeProvider } from "@mui/material";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useThree } from "@react-three/fiber";
 import Model from "@/components/Model";
 import theme from "@/styles/theme";
 import BottomDrawer from "@/components/swipe/BottomDrawer";
@@ -9,6 +9,16 @@ import { useState, useEffect } from "react";
 
 //const MESH_SERVER = 'https://mesh-server-880e3482d864.herokuapp.com'
 const MESH_SERVER = 'http://localhost:3000'
+
+const deg2rad = degrees => degrees * (Math.PI / 180);
+
+const Scene = () => {
+  useThree(({ camera }) => {
+    // camera.position.set(0, 0, 0);
+    camera.rotation.set(deg2rad(60), deg2rad(90), deg2rad(0));
+    // camera.lookAt(0, 0, 0);
+  })
+}
 
 const getMesh = async () => {
   const res = await fetch(`${MESH_SERVER}/mesh`)
@@ -78,13 +88,14 @@ const swipe = async () => {
           position: "relative",
           height: "100vh",
           padding: 0,
-          backgroundColor: "white"
+          backgroundColor: "white",
+          overflow: "hidden",
         }}
       >
         <Box
           sx={{
             position: "absolute",
-            top: "50%",
+            top: "45%",
             transform: "translateY(-50%)",
             display: "flex",
             justifyContent: "space-between",
@@ -94,7 +105,7 @@ const swipe = async () => {
           <SwipeButtons variant={"left"} onClick={handleLeft}/>
           <SwipeButtons variant={"right"} onClick={handleRight}/>
         </Box>
-        <Box sx={{ width: "100%", height: "100vh" }}>
+        <Box sx={{ width: "100%", height: "100vh", paddingX:'3rem'}}>
           <Canvas camera={{fov: 35, zoom: 1.3}}>
             <ambientLight intensity={0.1} />
             <directionalLight color="white" position={[0, 0, 5]} />
