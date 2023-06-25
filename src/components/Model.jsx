@@ -32,7 +32,7 @@ const Model = () => {
   const gridSize = 6;
   const gridStepSize = 1;
   const gridGeometry = new PlaneGeometry(gridStepSize, gridStepSize, gridSize, gridSize, false);
-  const gridMaterial = new MeshBasicMaterial({ color: '#fff', wireframe: true });
+  const gridMaterial = new MeshBasicMaterial({ color: '#fff', wireframe: false });
   const gridMesh = new Mesh(gridGeometry, gridMaterial);
   gridMesh.position.z = -0.5;
 
@@ -50,9 +50,6 @@ const Model = () => {
           {/* <lineSegments geometry={edges} material={edgeMaterial} /> */}
           {/* <primitive object={lines}/> */}
         </mesh>
-
-        {/* TODO: Add grid at base of model */}
-        {/* <primitive object={gridMesh} /> */}
         <mesh
           geometry={gridGeometry}
           material={gridMaterial}
