@@ -17,28 +17,21 @@ export default function Home() {
 
   return (
     <ThemeProvider theme={theme} >
-      <Container maxWidth="sm" sx={{ position: 'relative', height: '100vh', background: theme.palette.primary.mainGradient, display:'flex', justifyContent: 'center', alignItems: 'center', overflow: 'hidden' }}>
-        {!fadeIn ?
-          <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-            <IconHeart />
-            <Typography variant="h1" gutterBottom sx={{ color: 'white' }}>Likeable</Typography>
-            <Typography variant="body1" gutterBottom sx={{ color: 'white' }}>Swiping right on great design</Typography>
-          </Box>
-          :
-          (
-            <>
-              <Box sx={{ position: 'absolute', top: '45%', right: 0, transition: 'opacity 0.3s ease, transform 0.3s ease'}} >
-                <Button href='/swipe' sx={{ padding: 0 }}>
-                  <IconStart />
-                </Button>
-              </Box>
-              <Box sx={{ position: 'absolute' }} >
-                <IconBackgroundIcons />
-              </Box>
-              <Typography variant="h1" gutterBottom sx={{ position: 'absolute', color: 'white', marginX: 4, top:'15%', zIndex: 2 }}>Find what you like, begin with a swipe</Typography>
-            </>
-          )
-        }
+      <Container maxWidth="sm" sx={{ position: 'absolute', height: '100vh', background: theme.palette.primary.mainGradient, display: 'flex', justifyContent: 'center', alignItems: 'center', overflow: 'hidden', opacity: fadeIn ? 0 : 1, transition: 'opacity 2s ease-out', zIndex: 1 }}>
+        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', }}>
+          <IconHeart />
+          <Typography variant="h1" gutterBottom sx={{ color: 'white' }}>Likeable</Typography>
+          <Typography variant="body1" gutterBottom sx={{ color: 'white' }}>Swiping right on great design</Typography>
+        </Box>
+      </Container>
+      <Container maxWidth="sm" sx={{ position: 'relative', height: '100vh', background: theme.palette.primary.mainGradient, display: 'flex', justifyContent: 'center', alignItems: 'center', overflow: 'hidden', zIndex:0}}>
+        <Button href='/swipe' sx={{ position: 'absolute',right: 0, padding: 0 }}>
+          <IconStart />
+        </Button>
+        <Box sx={{ position: 'absolute' }} >
+          <IconBackgroundIcons />
+        </Box>
+        <Typography variant="h1" gutterBottom sx={{ position: 'absolute', color: 'white', marginX: 4, top: '15%', zIndex: 2 }}>Find what you like, begin with a swipe</Typography>
       </Container>
     </ThemeProvider>
   )
