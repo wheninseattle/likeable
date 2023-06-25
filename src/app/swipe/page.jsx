@@ -91,7 +91,7 @@ const Swipe = () => {
           display: "flex",
           flexDirection: "column",
           position: "relative",
-          height: "100vh",
+          height: "100lvh",
           padding: 0,
           backgroundColor: "white",
           overflow: "hidden",
