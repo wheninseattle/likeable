@@ -1,9 +1,7 @@
-'use client'
 import styles from './page.module.css'
 import { Button, Stack, Typography } from '@mui/material'
-import prisma from '@/lib/prisma'
 
-export default async function Home() {
+export default function Home() {
   return (
     <main className={styles.main}>
 
