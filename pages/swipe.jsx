@@ -35,7 +35,7 @@ const swipe = () => {
           <SwipeButtons variant={"right"} />
         </Box>
         <Box sx={{ width: "100%", height: "100vh" }}>
-          <Canvas>
+          <Canvas camera={{fov: 35, zoom: 1.3}}>
             <ambientLight intensity={0.1} />
             <directionalLight color="white" position={[0, 0, 5]} />
             <directionalLight color="white" position={[0, 5, 0]} />
