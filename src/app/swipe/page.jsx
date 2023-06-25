@@ -5,8 +5,67 @@ import Model from "@/components/Model";
 import theme from "@/styles/theme";
 import BottomDrawer from "@/components/swipe/BottomDrawer";
 import SwipeButtons from "@/components/swipe/SwipeButtons";
+import { useState, useEffect } from "react";
 
-const swipe = () => {
+//const MESH_SERVER = 'https://mesh-server-880e3482d864.herokuapp.com'
+const MESH_SERVER = 'http://localhost:3000'
+
+const getMesh = async () => {
+  const res = await fetch(`${MESH_SERVER}/mesh`)
+  const json = await res.json()
+  console.log('json', json)
+  return json
+}
+
+const swipe = async () => {
+  const [currentMesh, setCurrentMesh] = useState(12)
+
+  const setMesh = (meshId) => {
+    console.log('setting mesh in rando', meshId)
+    setCurrentMesh(meshId)
+  }
+
+  const handleLeft = async () => {
+    console.log('left')
+    const body = {
+      meshId: currentMesh,
+      liked: false
+    }
+    console.log(body)
+    const res = await fetch(`${MESH_SERVER}/cluster`, {
+      method: "POST",
+      body: JSON.stringify(body)
+    })
+    const nextMesh = await getMesh()
+    console.log('nextMesh', nextMesh)
+    setMesh(nextMesh)
+  }
+
+  const handleRight = async () => {
+    console.log('right')
+    const body = {
+      meshId: currentMesh,
+      liked: true
+    }
+    console.log(body)
+    const res = await fetch(`${MESH_SERVER}/cluster`, {
+      method: "POST",
+      body: JSON.stringify(body)
+    })
+    const nextMesh = await getMesh()
+    console.log('nextMesh', nextMesh)
+    setMesh(nextMesh)
+  }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const meshId = await getMesh()
+      console.log('useEffect setting mesh', meshId)
+      setMesh(meshId)
+    }
+    fetchData()
+  })
+
   return (
     <ThemeProvider theme={theme}>
       <Container
@@ -32,15 +91,15 @@ const swipe = () => {
             width: "100%",
           }}
         >
-          <SwipeButtons variant={"left"} />
-          <SwipeButtons variant={"right"} />
+          <SwipeButtons variant={"left"} onClick={handleLeft}/>
+          <SwipeButtons variant={"right"} onClick={handleRight}/>
         </Box>
         <Box sx={{ width: "100%", height: "100vh" }}>
           <Canvas camera={{fov: 35, zoom: 1.3}}>
             <ambientLight intensity={0.1} />
             <directionalLight color="white" position={[0, 0, 5]} />
             <directionalLight color="white" position={[0, 5, 0]} />
-            <Model />
+            { currentMesh ? <Model mesh={currentMesh} /> : undefined }
           </Canvas>
         </Box>
         {/* TODO: Limit to width of container and finish styling */}

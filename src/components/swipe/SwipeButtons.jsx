@@ -14,10 +14,11 @@ const GradientIconButton = styled(Button)(({ variant }) => ({
 }));
 
 const SwipeButtons = (props) => {
-  const { variant } = props;
+  const { variant, onClick } = props;
+  console.log('props.handler',props.onClick)
   return (
     <>
-      <GradientIconButton variant={variant}>
+      <GradientIconButton variant={variant} onClick={onClick}>
         {variant === "left" ? <IconSwipePass /> : <IconSwipeHeart />}
       </GradientIconButton>
     </>
