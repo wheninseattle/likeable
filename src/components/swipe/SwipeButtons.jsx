@@ -1,4 +1,3 @@
-import React from "react";
 import { styled } from "@mui/system";
 import Button from "@mui/material/Button";
 import IconSwipeHeart from "../icons/IconSwipeHeart";
@@ -11,7 +10,7 @@ const GradientIconButton = styled(Button)(({ variant }) => ({
     variant === "left" ? "0 2.125rem 2.125rem 0" : "2.125rem 0 0 2.125rem",
   color: "white",
   height: 48,
-  padding: "0",
+  padding: 0,
 }));
 
 const SwipeButtons = (props) => {
