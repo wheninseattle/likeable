@@ -7,8 +7,8 @@ import BottomDrawer from "@/components/swipe/BottomDrawer";
 import SwipeButtons from "@/components/swipe/SwipeButtons";
 import { useState, useEffect } from "react";
 
-//const MESH_SERVER = 'https://mesh-server-880e3482d864.herokuapp.com'
-const MESH_SERVER = 'http://localhost:3000'
+const MESH_SERVER = 'https://mesh-server-880e3482d864.herokuapp.com'
+// const MESH_SERVER = 'http://localhost:3000'
 
 const deg2rad = degrees => degrees * (Math.PI / 180);
 
@@ -27,18 +27,18 @@ const getMesh = async () => {
   return json
 }
 
-const swipe = async () => {
-  const [currentMesh, setCurrentMesh] = useState(12)
+const Swipe = () => {
+  const [currentMesh, setCurrentMesh] = useState(undefined)
 
-  const setMesh = (meshId) => {
-    console.log('setting mesh in rando', meshId)
-    setCurrentMesh(meshId)
+  const setMesh = (mesh) => {
+    console.log('setting mesh in rando', mesh)
+    setCurrentMesh(mesh)
   }
 
   const handleLeft = async () => {
     console.log('left')
     const body = {
-      meshId: currentMesh,
+      meshId: currentMesh.id,
       liked: false
     }
     console.log(body)
@@ -48,13 +48,14 @@ const swipe = async () => {
     })
     const nextMesh = await getMesh()
     console.log('nextMesh', nextMesh)
-    setMesh(nextMesh)
+    // setMesh(nextMesh)
+    setCurrentMesh(nextMesh)
   }
 
   const handleRight = async () => {
     console.log('right')
     const body = {
-      meshId: currentMesh,
+      meshId: currentMesh.id,
       liked: true
     }
     console.log(body)
@@ -69,12 +70,16 @@ const swipe = async () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const meshId = await getMesh()
-      console.log('useEffect setting mesh', meshId)
-      setMesh(meshId)
+      try {
+        const mesh = await getMesh()
+        console.log('useEffect setting mesh', mesh)
+        setMesh(mesh)
+      } catch (error){
+        console.log('error', error)
+      }
     }
     fetchData()
-  })
+  }, [])
 
   return (
     <ThemeProvider theme={theme}>
@@ -110,14 +115,16 @@ const swipe = async () => {
             <ambientLight intensity={0.1} />
             <directionalLight color="white" position={[0, 0, 5]} />
             <directionalLight color="white" position={[0, 5, 0]} />
-            { currentMesh ? <Model mesh={currentMesh} /> : undefined }
+          {currentMesh && <Model mesh={currentMesh} /> }
           </Canvas>
         </Box>
         {/* TODO: Limit to width of container and finish styling */}
-        <BottomDrawer />
+        (
+          {currentMesh && <BottomDrawer mesh={currentMesh}/>}
+          )
       </Container>
     </ThemeProvider>
   );
 };
 
-export default swipe;
+export default Swipe;

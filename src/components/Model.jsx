@@ -15,7 +15,7 @@ import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
 import * as THREE from "three";
 
 const Model = ({ mesh }) => {
-  const fileName = `mesh/${ mesh || Math.floor(Math.random()*100) }.obj`
+  const fileName = `mesh/${ mesh.id || Math.floor(Math.random()*100) }.obj`
   console.log('modelmesh', mesh)
   const objRef = useRef();
   const modelDisplay = useLoader(OBJLoader, fileName);

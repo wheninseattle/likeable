@@ -1,14 +1,15 @@
-import React, { useState } from "react";
-import { Box, Button, Container, Drawer, Typography } from "@mui/material";
+import { useState } from "react";
+import { Box, Button, Container, Stack, Typography } from "@mui/material";
 import PlaceIcon from "@mui/icons-material/Place";
 import MetricInfo from "./MetricInfo";
 
-const BottomDrawer = () => {
-  const [open, setOpen] = React.useState(false);
-
+const BottomDrawer = ({ mesh }) => {
+  const [open, setOpen] = useState(false);
+  console.log(mesh);
   const toggleDrawer = () => {
     setOpen(!open);
   };
+
   return (
     <Container maxWidth="sm" sx={{ padding: 5 }}>
       <Box
@@ -28,9 +29,11 @@ const BottomDrawer = () => {
         background="#F8F8F8"
         paddingBottom="1rem"
         overflow="hidden"
-       
-        sx={{maxHeight: open ? "100%" : "10rem",transition:"max-height 0.5s ease-in-out"}}
-        >
+        sx={{
+          maxHeight: open ? "100%" : "10rem",
+          transition: "max-height 0.5s ease-in-out",
+        }}
+      >
         <Button
           variant="contained"
           fullWidth={true}
@@ -43,20 +46,22 @@ const BottomDrawer = () => {
           }}
           onClick={toggleDrawer}
         ></Button>
-        <Box sx={{ paddingX: "2rem" }}>
-          <Typography variant="h2">Massing #12</Typography>
-          <Typography variant="body1" sx={{ color: "#5E5E5E;" }}>
-            Project x
+        <Stack spacing={.75} sx={{paddingX: '2rem'}}>
+
+          <Typography variant="h2">{`Massing #${mesh.id}`}</Typography>
+          <Typography variant="h3" sx={{ color: "#5E5E5E;" }}>
+            {`Cluster ${mesh.clusterId || "X"}`}
           </Typography>
-          <Box sx={{ display: "flex" }}>
+          <Box sx={{ display: "flex"}}>
             <PlaceIcon color="primary" />
             <Typography variant="body1" sx={{ color: "#5E5E5E;" }}>
-              Seattle, WA
+              {`${mesh.location || "Seattle, WA"}`}
             </Typography>
           </Box>
-        </Box>
+        {/* </Box> */}
+        </Stack>
         {open && (
-          <Box sx={{ paddingX: "2rem" }}>
+          <Stack spacing={1} sx={{ paddingX: "2rem", marginTop: '1rem' }}>
             <Typography variant="body1" sx={{ paddingBottom: "1rem" }}>
               An architectural marvel that spirals into the sky. Its unique
               design reflects the city&apos;s vibrant spirit.
@@ -67,12 +72,15 @@ const BottomDrawer = () => {
             >
               Iteration Info
             </Typography>
-            <MetricInfo name={"Floor Plate Size"} value={"20,000 sf"} />
-            <MetricInfo name={"No. of Floors"} value={21} />
-            <MetricInfo name={"Floor Edges"} value={"50f"} />
-            <MetricInfo name={"Rotation"} value={"30 deg"} />
-            <MetricInfo name={"Floor to Floor Height"} value={"15 ft"} />
-          </Box>
+            <MetricInfo name={"Floor Plate Size"} value={`${mesh.p0} SQFT`} />
+            <MetricInfo name={"No. of Floors"} value={mesh.p1} />
+            <MetricInfo name={"Floor Edges"} value={`${mesh.p2} Sides`} />
+            <MetricInfo name={"Rotation"} value={`${mesh.p4} deg`} />
+            <MetricInfo
+              name={"Floor to Floor Height"}
+              value={`${mesh.p5} FT`}
+            />
+          </Stack>
         )}
       </Box>
     </Container>

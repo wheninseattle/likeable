@@ -21,6 +21,7 @@ const theme = createTheme({
         fontFamily: 'Poppins, sans-serif',
         h1: { fontSize: '2.5rem', fontWeight: 700, lineHeight: '130%' },
         h2: { fontSize: '2rem', fontWeight: 700 },
+        h3: { fontSize: '1.5rem', fontWeight: 400 },
         body1: { fontSize: '1rem',}
     },
     breakpoints: {
