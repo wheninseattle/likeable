@@ -27,7 +27,7 @@ export default function Home() {
           :
           (
             <>
-              <Box sx={{ position: 'absolute', top: '45%', right: 0 }} >
+              <Box sx={{ position: 'absolute', top: '45%', right: 0, transition: 'opacity 0.3s ease, transform 0.3s ease'}} >
                 <Button href='/swipe' sx={{ padding: 0 }}>
                   <IconStart />
                 </Button>
