@@ -1,11 +1,21 @@
 import { useState } from "react";
-import { Box, Button, Container, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  IconButton,
+  Stack,
+  Typography,
+} from "@mui/material";
 import PlaceIcon from "@mui/icons-material/Place";
 import MetricInfo from "./MetricInfo";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 const BottomDrawer = ({ mesh }) => {
   const [open, setOpen] = useState(false);
-  console.log(mesh);
   const toggleDrawer = () => {
     setOpen(!open);
   };
@@ -34,10 +44,9 @@ const BottomDrawer = ({ mesh }) => {
           transition: "max-height 0.5s ease-in-out",
         }}
       >
-        <Button
+        <IconButton
           variant="contained"
           fullWidth={true}
-          color="grey"
           sx={{
             padding: 0,
             height: "25px",
@@ -45,23 +54,28 @@ const BottomDrawer = ({ mesh }) => {
             "&:hover": { boxShadow: "none" },
           }}
           onClick={toggleDrawer}
-        ></Button>
-        <Stack spacing={.75} sx={{paddingX: '2rem'}}>
-
+        >
+         {open?
+         <KeyboardArrowDownIcon size="large" color="secondary" />:
+         <KeyboardArrowUpIcon size="large" color="secondary" />
+         
+         } 
+        </IconButton>
+        <Stack spacing={0.75} sx={{ paddingX: "2rem" }}>
           <Typography variant="h2">{`Massing #${mesh.id}`}</Typography>
           <Typography variant="h3" sx={{ color: "#5E5E5E;" }}>
             {`Cluster ${mesh.clusterId || "X"}`}
           </Typography>
-          <Box sx={{ display: "flex"}}>
+          <Box sx={{ display: "flex" }}>
             <PlaceIcon color="primary" />
             <Typography variant="body1" sx={{ color: "#5E5E5E;" }}>
               {`${mesh.location || "Seattle, WA"}`}
             </Typography>
           </Box>
-        {/* </Box> */}
+          {/* </Box> */}
         </Stack>
         {open && (
-          <Stack spacing={1} sx={{ paddingX: "2rem", marginTop: '1rem' }}>
+          <Stack spacing={1} sx={{ paddingX: "2rem", marginTop: "1rem" }}>
             <Typography variant="body1" sx={{ paddingBottom: "1rem" }}>
               An architectural marvel that spirals into the sky. Its unique
               design reflects the city&apos;s vibrant spirit.
