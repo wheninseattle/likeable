@@ -1,10 +1,20 @@
 "use client";
 import { Box, Container, ThemeProvider } from "@mui/material";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useThree } from "@react-three/fiber";
 import Model from "@/components/Model";
 import theme from "@/styles/theme";
 import BottomDrawer from "@/components/swipe/BottomDrawer";
 import SwipeButtons from "@/components/swipe/SwipeButtons";
+
+const deg2rad = degrees => degrees * (Math.PI / 180);
+
+const Scene = () => {
+  useThree(({ camera }) => {
+    // camera.position.set(0, 0, 0);
+    camera.rotation.set(deg2rad(60), deg2rad(90), deg2rad(0));
+    // camera.lookAt(0, 0, 0);
+  })
+}
 
 const swipe = () => {
   return (
@@ -19,7 +29,8 @@ const swipe = () => {
           position: "relative",
           height: "100vh",
           padding: 0,
-          backgroundColor: "white"
+          backgroundColor: "white",
+          overflow: "hidden",
         }}
       >
         <Box
@@ -35,7 +46,7 @@ const swipe = () => {
           <SwipeButtons variant={"left"} />
           <SwipeButtons variant={"right"} />
         </Box>
-        <Box sx={{ width: "100%", height: "100vh" }}>
+        <Box sx={{ width: "100%", height: "100vh", paddingX:'3rem'}}>
           <Canvas camera={{fov: 35, zoom: 1.3}}>
             <ambientLight intensity={0.1} />
             <directionalLight color="white" position={[0, 0, 5]} />

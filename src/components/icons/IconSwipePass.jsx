@@ -38,9 +38,6 @@ const IconSwipePass = () => {
           <stop stopColor="#FFCD4B"></stop>
           <stop offset="1" stopColor="#ED5887"></stop>
         </linearGradient>
-        <clipPath id="clip0_0_1">
-          <rect width="393" height="852" y="-392" fill="#fff" rx="50"></rect>
-        </clipPath>
       </defs>
     </svg>
   )
