@@ -4,7 +4,6 @@ const prisma = new PrismaClient()
 if (process.env.SEED_MODE !== 'seed') {
     const main = async () => {
         const meshes = await prisma.mesh.findMany()
-        console.log(meshes[0])
     }
     
     main()

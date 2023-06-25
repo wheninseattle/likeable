@@ -15,7 +15,7 @@ if (process.env.SEED_MODE !== 'seed') {
                     id: mesh.id
                 },
                 data: {
-                    data: meshFileString.replaceAll('\r\n','\n')
+                    data: meshFileString
                 }
             })
             console.log(res)

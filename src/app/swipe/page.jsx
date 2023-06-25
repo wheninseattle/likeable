@@ -2,8 +2,7 @@
 import { Box, Container } from "@mui/material";
 import { Canvas } from "@react-three/fiber";
 import Model from "@/components/Model";
-
-const swipe = () => {
+const Swipe = (meshId) => {
   return (
     <Container
       maxWidth="sm"
@@ -19,11 +18,11 @@ const swipe = () => {
           <ambientLight intensity={0.1} />
           <directionalLight color="red" position={[0, 0, 5]} />
           <directionalLight color="blue" position={[0, 5, 0]} />
-          <Model/>
+          <Model  meshId={meshId}/>
         </Canvas>
       </Box>
     </Container>
   );
 };
 
-export default swipe;
+export default Swipe;
