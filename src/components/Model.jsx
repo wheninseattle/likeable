@@ -14,9 +14,12 @@ import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
 
 import * as THREE from "three";
 
-const Model = () => {
+const Model = ({ mesh }) => {
+  const fileName = `mesh/${ mesh || Math.floor(Math.random()*100) }.obj`
+  console.log('modelmesh', mesh)
   const objRef = useRef();
-  const modelDisplay = useLoader(OBJLoader, "../../Test1.obj");
+  const modelDisplay = useLoader(OBJLoader, fileName);
+  // const modelDisplay = useLoader(OBJLoader, "../../Test1.3dm");
 
   // const edgeMaterial = new LineBasicMaterial({ color: 0x000000, linewidth: 2 }); // Define edge material
   // const edgeGroup = new THREE.Group();
