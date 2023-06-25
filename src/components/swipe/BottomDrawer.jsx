@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Box, Button, Container, Drawer, Typography } from "@mui/material";
 import PlaceIcon from "@mui/icons-material/Place";
-import styles from "../../styles/main.module.css"
 
 const BottomDrawer = () => {
   const [open, setOpen] = React.useState(false);
