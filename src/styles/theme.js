@@ -16,23 +16,26 @@ const theme = createTheme({
             main: '#FFCD4B',
             mainGradient: 'linear-gradient(to bottom, #FFCD4B, #ED5887)',
         },
+        secondary: {
+            main: '#ED5887',
+        }
     },
     typography: {
         fontFamily: 'Poppins, sans-serif',
         h1: { fontSize: '2.5rem', fontWeight: 700, lineHeight: '130%' },
         h2: { fontSize: '2rem', fontWeight: 700 },
         h3: { fontSize: '1.5rem', fontWeight: 400 },
-        body1: { fontSize: '1rem',}
+        body1: { fontSize: '1rem', }
     },
     breakpoints: {
         values: {
-          xs: 0,
-          sm: 600,
-          md: 960,
-          lg: 1280,
-          xl: 1920,
+            xs: 0,
+            sm: 600,
+            md: 960,
+            lg: 1280,
+            xl: 1920,
         },
-      },
+    },
 })
 
 export default theme;
