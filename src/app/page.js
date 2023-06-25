@@ -9,11 +9,9 @@ export default function Home() {
         <Stack spacing={2} direction="column" sx={{ alignItems: 'center' }}>
           <h1>likeable</h1>
           <Typography variant="h2" gutterBottom>🏗️♥️</Typography>
-          <Button variant="contained" color="primary">Start your design fling</Button>
+          <Button variant="contained" color="primary" href='/swipe' >Start your design fling</Button>
         </Stack>
       </div>
-
-
     </main>
   )
 }
