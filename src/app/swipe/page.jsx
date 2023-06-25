@@ -19,6 +19,7 @@ const swipe = () => {
           position: "relative",
           height: "100vh",
           padding: 0,
+          backgroundColor: "white"
         }}
       >
         <Box
