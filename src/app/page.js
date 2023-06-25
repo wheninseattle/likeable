@@ -14,13 +14,13 @@ export default function Home() {
   const [fadeIn, setFadeIn] = useState(false)
   const [hideSplash, setHideSplash] = useState(false)
 
-  setTimeout(() => { setFadeIn(true) }, 2200);
-  setTimeout(() => { setHideSplash(true) }, 3000);
+  // setTimeout(() => { setFadeIn(true) }, 2300);
+  // setTimeout(() => { setHideSplash(true) }, 3000);
 
   return (
     <ThemeProvider theme={theme} >
-      <Container maxWidth='sm' sx={{ height: '100vh', background: theme.palette.primary.mainGradient, overflow: 'hidden', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        <Container sx={{ position: 'absolute', height: '100vh', background: theme.palette.primary.mainGradient, display: hideSplash ? 'none' : 'flex', justifyContent: 'center', alignItems: 'center', opacity: fadeIn ? 0 : 1, transition: 'opacity 1s ease-out', zIndex: 1 }}>
+      {/* <Container maxWidth='sm' sx={{ height: '100vh', background: theme.palette.primary.mainGradient, overflow: 'hidden', display: 'flex', justifyContent: 'center', alignItems: 'center' }}> */}
+        <Container maxWidth='sm' sx={{ position: 'absolute', height: '100vh', background: theme.palette.primary.mainGradient, display: hideSplash ? 'none' : 'flex', justifyContent: 'center', alignItems: 'center', opacity: fadeIn ? 0 : 1, transition: 'opacity 1s ease-out', zIndex: 1 }}>
           <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', }}>
             <IconHeart />
             <Typography variant="h1" gutterBottom sx={{ color: 'white' }}>Likeable</Typography>
@@ -36,7 +36,7 @@ export default function Home() {
           </Box>
           <Typography variant="h1" gutterBottom sx={{ position: 'absolute', color: 'white', marginX: 4, top: '15%', zIndex: 2 }}>Find what you like, begin with a swipe</Typography>
         </Container>
-      </Container>
+      {/* </Container> */}
     </ThemeProvider>
   )
 }
