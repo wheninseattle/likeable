@@ -60,7 +60,7 @@ const Model = () => {
           position={[0, -0.75, 0]}
           rotation={[-Math.PI / 2, 0, 0]}
         /> */}
-        <gridHelper args={[1,6,6]} position={[0, -0.75, 0]}/>
+        <gridHelper args={[0.75,6,6]} position={[0, -0.75, 0]}/>
       </group>
       <OrbitControls />
     </>

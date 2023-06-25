@@ -36,7 +36,7 @@ const swipe = () => {
         <Box
           sx={{
             position: "absolute",
-            top: "50%",
+            top: "45%",
             transform: "translateY(-50%)",
             display: "flex",
             justifyContent: "space-between",
