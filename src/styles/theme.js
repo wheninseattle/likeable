@@ -1,7 +1,13 @@
 'use client';
 import { createTheme } from "@mui/material";
 
-// import { Poppins } from "next/font/google";
+import { Poppins } from "next/font/google";
+
+export const designColors = {
+    white: '#FFFFFF',
+    black: '#000000',
+    grey: '#F8F8F8'
+}
 
 const theme = createTheme({
     palette: {
@@ -9,12 +15,22 @@ const theme = createTheme({
         primary: {
             main: '#FFCD4B',
             mainGradient: 'linear-gradient(to bottom, #FFCD4B, #ED5887)',
-        }
+        },
     },
     typography: {
-        // fontFamily: 'Poppins, sans-serif',
-        h1: { fontSize: '3.1875rem', fontWeight: 700 },
+        fontFamily: 'Poppins, sans-serif',
+        h1: { fontSize: '1.1875rem', fontWeight: 700 },
+        body1: { fontSize: '1rem',}
     },
+    breakpoints: {
+        values: {
+          xs: 0,
+          sm: 600,
+          md: 960,
+          lg: 1280,
+          xl: 1920,
+        },
+      },
 })
 
 export default theme;

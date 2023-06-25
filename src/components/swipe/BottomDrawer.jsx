@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Box, Button, Drawer, Typography } from "@mui/material";
+import { Box, Button, Container, Drawer, Typography } from "@mui/material";
+import PlaceIcon from "@mui/icons-material/Place";
 
 const BottomDrawer = () => {
   const [open, setOpen] = React.useState(false);
@@ -8,7 +9,7 @@ const BottomDrawer = () => {
     setOpen(!open);
   };
   return (
-    <>
+    <Container maxWidth="sm" sx={{padding: 5, height:'fit-content'}}>
       <Box
         position="fixed"
         left={0}
@@ -16,12 +17,16 @@ const BottomDrawer = () => {
         width="100%"
         height="fit-content"
         display="flex"
+        flexDirection={"column"}
         justifyContent="center"
+        textAlign="left"
         alignItems="center"
         bgcolor="#f0f0f0"
         borderTop="1px solid #ccc"
         zIndex={999}
         transition="0.3s"
+        paddingY={2}
+        background='#F8F8F8'
       >
         <Button
           variant="contained"
@@ -30,7 +35,15 @@ const BottomDrawer = () => {
           onClick={toggleDrawer}
         />
         <Typography variant="h1">Massing #12</Typography>
-        <Typography variant="body1">Massing #12</Typography>
+        <Typography variant="body1" sx={{ color: "#5E5E5E;" }}>
+          Massing #12
+        </Typography>
+        <Box sx={{ display: "flex" }}>
+          <PlaceIcon color="primary" />
+          <Typography variant="body1" sx={{ color: "#5E5E5E;" }}>
+            Seattle, WA
+          </Typography>
+        </Box>
       </Box>
       <Drawer
         anchor="bottom"
@@ -52,7 +65,7 @@ const BottomDrawer = () => {
           <p>Any content can go here...</p>
         </Box>
       </Drawer>
-    </>
+    </Container>
   );
 };
 

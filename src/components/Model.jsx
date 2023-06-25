@@ -28,23 +28,26 @@ const Model = () => {
   // modelDisplay.add(edgeGroup);
 
   useFrame(() => {
-    objRef.current.rotation.x += 0.005;
-    objRef.current.rotation.y += 0.005;
+    // objRef.current.rotation.x += 0.005;
+    // objRef.current.rotation.y += 0.005;
   });
 
   return (
     <>
       <group>
-        <mesh position={[0, -1, 0]} >
+        <mesh position={[0, -2, 0]} >
+          {/* TODO: Get model to scale to container */}
           <primitive
             object={modelDisplay}
             ref={objRef}
             scale={[0.005, 0.005, 0.005]}
           />
+          {/* TODO: Get edges to show up */}
           {/* <lineSegments geometry={edges} material={edgeMaterial} /> */}
           {/* <primitive object={lines}/> */}
         </mesh>
 
+        {/* TODO: Add grid at base of model */}
         {/* <mesh
           geometry={gridGeometry}
           material={gridMaterial}
