@@ -11,12 +11,13 @@ const BottomDrawer = () => {
   return (
     <Container maxWidth="sm" sx={{padding: 5, height:'fit-content'}}>
       <Box
-        position="fixed"
+        position="absolute"
         left={0}
         bottom={0}
         width="100%"
         height="fit-content"
         display="flex"
+        gap="0.5rem"
         flexDirection={"column"}
         justifyContent="center"
         textAlign="left"
@@ -25,18 +26,22 @@ const BottomDrawer = () => {
         borderTop="1px solid #ccc"
         zIndex={999}
         transition="0.3s"
-        paddingY={2}
         background='#F8F8F8'
-      >
+        paddingBottom="1rem"
+      > 
         <Button
           variant="contained"
+          fullWidth={true}
           color="grey"
-          sx={{ width: "50px" }}
+          sx={{padding:0, height:"25px", boxShadow:"none"}}
+          // sx={{ width: "50px" }}
           onClick={toggleDrawer}
-        />
+        >
+
+        </Button>
         <Typography variant="h1">Massing #12</Typography>
         <Typography variant="body1" sx={{ color: "#5E5E5E;" }}>
-          Massing #12
+          Project x
         </Typography>
         <Box sx={{ display: "flex" }}>
           <PlaceIcon color="primary" />
@@ -44,27 +49,21 @@ const BottomDrawer = () => {
             Seattle, WA
           </Typography>
         </Box>
+        { open&& 
+          <Box
+          >
+            <Typography variant="body1" sx={{ color: "#5E5E5E;" }}>
+              Metric 1
+            </Typography>
+            <Typography variant="body1" sx={{ color: "#5E5E5E;" }}>
+              Metric 2
+            </Typography>
+            <Typography variant="body1" sx={{ color: "#5E5E5E;" }}>
+              Metric 3
+            </Typography>
+          </Box>
+        } 
       </Box>
-      <Drawer
-        anchor="bottom"
-        open={open}
-        onClose={toggleDrawer}
-        PaperProps={{
-          style: { maxHeight: "calc(100% - 50px)" },
-        }}
-      >
-        <Box
-          display="flex"
-          flexDirection="column"
-          justifyContent="center"
-          alignItems="center"
-          height="100%"
-          p={2}
-        >
-          <h2>Drawer Content</h2>
-          <p>Any content can go here...</p>
-        </Box>
-      </Drawer>
     </Container>
   );
 };
