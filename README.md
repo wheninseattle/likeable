@@ -1,6 +1,6 @@
 # Likeable
 
-[Deployed Site](https://likeable.vercel.app)
+[Deployed Site](https://likeable.vercel.app) - Best viewed on mobile devices.
 
 > A like/dislike based rating app for providing feedback on design options.
 # Goals
