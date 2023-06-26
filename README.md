@@ -14,6 +14,9 @@ Welcome to Likeable! This web application is designed to facilitate the feedback
 
 The app utilizes a machine learning algorithm to analyze user feedback and assign a valence to different clusters of design options, thereby revealing the overall group sentiment. This information can be invaluable in the decision-making process and helps stakeholders understand the preferences and trends within their design community.
 
+##Presentation Slides
+Access our 2023 Seattle AEC Tech Hackathon presentation [here](https://www.figma.com/proto/9phU2F1dbPIJQNIefXEVVm/Likable?page-id=0%3A1&type=design&node-id=1-1060&viewport=3453%2C983%2C0.12&scaling=min-zoom&starting-point-node-id=1%3A1060&mode=design)
+
 ## Technology Stack
 
 The Likeable web app is built using the following technologies:
