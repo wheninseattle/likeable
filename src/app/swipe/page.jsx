@@ -7,7 +7,7 @@ import BottomDrawer from "@/components/swipe/BottomDrawer";
 import SwipeButtons from "@/components/swipe/SwipeButtons";
 import { useState, useEffect, useRef } from "react";
 
-const MESH_SERVER = "https://mesh-server-880e3482d864.herokuapp.com";
+const MESH_SERVER = "https://mesh.likeable.dev";
 
 const getMesh = async () => {
   const res = await fetch(`${MESH_SERVER}/mesh`);
