@@ -50,6 +50,10 @@ const Swipe = () => {
     };
     const res = await fetch(`${MESH_SERVER}/cluster`, {
       method: "POST",
+      headers: {
+        'accept': 'application/json',
+        'content-type': 'application/json'
+      },
       body: JSON.stringify(body),
     });
     const nextMesh = await getMesh();
