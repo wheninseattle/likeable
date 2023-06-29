@@ -7,7 +7,7 @@ import BottomDrawer from "@/components/swipe/BottomDrawer";
 import SwipeButtons from "@/components/swipe/SwipeButtons";
 import { useState, useEffect, useRef } from "react";
 
-const MESH_SERVER = "http://34.195.3.120";
+const MESH_SERVER = "http://mesh.likeable.dev";
 
 const getMesh = async () => {
   const res = await fetch(`${MESH_SERVER}/mesh`);
