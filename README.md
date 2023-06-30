@@ -32,8 +32,8 @@ The Likeable web app is built using the following technologies:
 - [Material-UI (MUI)](https://mui.com/) - A popular React component library, used for a set of baseline components and UI elements.
 
 ## See Also:
-
-- [Proxy server for database requests] (https://github.com/fx-wood/mesh-server)
+- [Python scripts for generating design options](data_generation)
+- [Nodejs Proxy server for database requests](https://github.com/fx-wood/mesh-server)
 
 ## Getting Started
 
