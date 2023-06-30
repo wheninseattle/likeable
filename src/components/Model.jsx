@@ -5,7 +5,7 @@ import { OrbitControls } from "@react-three/drei";
 import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
 
 const Model = ({ mesh }) => {
-  const fileName = `mesh/${mesh.id || Math.floor(Math.random() * 100)}.obj`;
+  const fileName = mesh.data;
   console.log("modelmesh", mesh);
   const objRef = useRef();
   const modelDisplay = useLoader(OBJLoader, fileName);
